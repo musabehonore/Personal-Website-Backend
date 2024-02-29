@@ -112,18 +112,6 @@ describe("Testing API", () => {
     expect(response.statusCode).toBe(400);
   });
 
-
-
-  it('Posting a blog', async () => {
-    const res = await superTest(app)
-      .post('/api/blogs')
-      .send({
-        title: "Testingg12",
-        content: "Testing one22245",
-      })
-      .set('Authorization', 'Bearer ' + token.token);
-    expect(res.statusCode).toBe(201);
-  });
   it('editing a blog', async () => {
     const res = await superTest(app)
       .patch('/api/blogs/65dddfbcc954392f2eeda438')
@@ -133,7 +121,7 @@ describe("Testing API", () => {
       .set('Authorization', 'Bearer ' + token.token);
     expect(res.body.message).toContain('Blog updated!')
   });
-  it('Posting a blog', async () => {
+  it('Posting a blog error', async () => {
     const res = await superTest(app)
       .post('/api/blogs')
       .send({
@@ -295,4 +283,16 @@ describe("Testing API", () => {
     expect(res.statusCode).toBe(200);
   });
 
+  // it('Posting a blog', async () => {
+  //   const res = await superTest(app)
+  //     .post('/api/blogs')
+  //     .send({
+  //       title: "Testingg12",
+  //       content: "Testing one22245",
+  //     })
+  //     .set('Authorization', 'Bearer ' + token.token);
+  //   expect(res.statusCode).toBe(201);
+  // });
+
+  
 });

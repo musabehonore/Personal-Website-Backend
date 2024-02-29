@@ -12,7 +12,7 @@ class CustomResponse {
   constructor(req: Request, res: Response) {
     this.req = req;
     this.res = res;
-  }
+   }
   static success<T>(
     data: T,
     message: string,

@@ -2,11 +2,16 @@ import express from 'express';
 import { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Router from './routes/routes';
+import swaggerUi from "swagger-ui-express"
+import swaggerDocuments from "../swagger.json"
 
 const app: Express = express();
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocuments));
+
 app.use(express.json());
 app.use('/api', Router);
+
 
 app.get('/api/*', (req: Request, res: Response) => {
   res.status(404).json({ message: 'API Not Found' });
