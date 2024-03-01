@@ -2,7 +2,7 @@ import app from './index';
 import mongoose from 'mongoose';
 
 
-mongoose.connect('mongodb://localhost:27017/myBlogsDatabase')
+mongoose.connect('mongodb+srv://MusabeDB:Musabe1@musabedb.yhmlt9y.mongodb.net/?retryWrites=true&w=majority&appName=MusabeDB')
   .then(() => {
     console.log('Connected to MongoDB !! ');
     

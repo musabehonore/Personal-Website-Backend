@@ -7,7 +7,7 @@ import { loginUser } from '../src/controllers/usersController';
 
 
 beforeAll(async () => {
-  await mongoose.connect('mongodb://localhost:27017/myBlogsDatabase');
+  await mongoose.connect('mongodb+srv://MusabeDB:Musabe1@musabedb.yhmlt9y.mongodb.net/?retryWrites=true&w=majority&appName=MusabeDB');
 }, 50000);
 
 afterAll(async () => {
@@ -51,7 +51,7 @@ describe("Testing API", () => {
     const response = await superTest(app)
       .post('/api/login')
       .send({
-        username: 'Musanaaabb',
+        username: 'Musabe10',
         password: 'abcD1',
       });
     token2.token2 = response.body.token;
@@ -63,7 +63,7 @@ describe("Testing API", () => {
     const response = await superTest(app)
       .post('/api/login')
       .send({
-        username: 'Musabe10',
+        username: 'Musabe',
         password: 'abcD1',
       });
     token.token = response.body.token;
@@ -114,7 +114,7 @@ describe("Testing API", () => {
 
   it('editing a blog', async () => {
     const res = await superTest(app)
-      .patch('/api/blogs/65dddfbcc954392f2eeda438')
+      .patch('/api/blogs/65e0fe53b61562a46e33e6dd')
       .send({
         content: "Testing 1",
       })
@@ -136,7 +136,7 @@ describe("Testing API", () => {
 
   it('Posting a comment', async () => {
     const res = await superTest(app)
-      .post('/api/blogs/65dddfbcc954392f2eeda438/comments')
+      .post('/api/blogs/65e0fe53b61562a46e33e6dd/comments')
       .send({
         name: "mudanago",
         email: "hhg@gmail.com",
@@ -147,7 +147,7 @@ describe("Testing API", () => {
   });
   it('error Posting a comment', async () => {
     const res = await superTest(app)
-      .post('/api/blogs/65dddfbcc954392f2eeda438/comments')
+      .post('/api/blogs/65e0fe53b61562a46e33e6dd/comments')
       .send({
 
         email: "hhg@gmail.com",
@@ -158,7 +158,7 @@ describe("Testing API", () => {
   });
   it('editing a comment status', async () => {
     const res = await superTest(app)
-      .patch('/api/blogs/65dddfbcc954392f2eeda438/comments/65dde57305bd8939a04b7e11')
+      .patch('/api/blogs/65e0fe53b61562a46e33e6dd/comments/65e0ff6fb61562a46e33e6df')
       .send({
 
         status: false,
@@ -168,7 +168,7 @@ describe("Testing API", () => {
   });
   it('error editing Posting a comment', async () => {
     const res = await superTest(app)
-      .patch('/api/blogs/65dddfbcc954392f2eeda438/comments')
+      .patch('/api/blogs/65e0fe53b61562a46e33e6dd/comments')
       .send({
 
         status: false,
@@ -178,7 +178,7 @@ describe("Testing API", () => {
   });
   it('error editing Posting a comment', async () => {
     const res = await superTest(app)
-      .patch('/api/blogs/65dddfbcc954392f2eeda438/comments/65dde57305bd8939a04b7e11')
+      .patch('/api/blogs/65e0fe53b61562a46e33e6dd/comments/65e0ff6fb61562a46e33e6df')
       .send({
         status: "blogs",
       })
@@ -188,7 +188,7 @@ describe("Testing API", () => {
 
   it('Liking', async () => {
     const res = await superTest(app)
-      .post('/api/blogs/65dddfbcc954392f2eeda438/like')
+      .post('/api/blogs/65e0fe53b61562a46e33e6dd/like')
       .send({
         name: "mudanago",
         email: "hhg@gmail.com",
@@ -199,7 +199,7 @@ describe("Testing API", () => {
   });
   it('Liking', async () => {
     const res = await superTest(app)
-      .get('/api/blogs/65dddfbcc954392f2eeda438/likes')
+      .get('/api/blogs/65e0fe53b61562a46e33e6dd/likes')
       .set('Authorization', 'Bearer ' + token.token);
     expect(res.statusCode).toBe(200);
   });
@@ -213,7 +213,7 @@ describe("Testing API", () => {
   
   it('get a query', async () => {
     const res = await superTest(app)
-      .get('/api/queries/65dafad4236b0704a5308e46')
+      .get('/api/queries/65e100aab61562a46e33e6e1')
       .set('Authorization', 'Bearer ' + token.token);
     expect(res.body.message).toContain('This is the Query');
   });
@@ -231,13 +231,13 @@ describe("Testing API", () => {
   });
   it('get comments', async () => {
     const res = await superTest(app)
-      .get('/api/blogs/65dddfbcc954392f2eeda438/comments')
+      .get('/api/blogs/65e0fe53b61562a46e33e6dd/comments')
       .set('Authorization', 'Bearer ' + token.token);
     expect(res.statusCode).toBe(200);
   });
   it('get a blog', async () => {
     const res = await superTest(app)
-      .get('/api/blogs/65dddfbcc954392f2eeda438')
+      .get('/api/blogs/65e0fe53b61562a46e33e6dd')
       .set('Authorization', 'Bearer ' + token.token);
     expect(res.statusCode).toBe(200);
   });
@@ -268,7 +268,7 @@ describe("Testing API", () => {
 
   it('editing a comment status', async () => {
     const res = await superTest(app)
-      .patch('/api/blogs/65dddfbcc954392f2eeda438/comments/658de57305bd8939a04b7e11')
+      .patch('/api/blogs/65e0fe53b61562a46e33e6dd/comments/658de57305bd8939a04b7e11')
       .send({
 
         status: false,
